@@ -1,17 +1,1 @@
-Ruby Rake Project
-=================
-
-This project is use:
-
-* Ruby 2.2
-* Rspec
-* Rake
-* Guard
-
-Usage:
-
-1. Install dependencies: _bundle install_
-2. Run test: _rake_
-
-To use Guard, just run: _guard_.
-
+Este es el repositorio de Fernando Gainey para el trabajo práctico final de la materia AyDOO.
