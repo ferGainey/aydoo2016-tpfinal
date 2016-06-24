@@ -1,0 +1,3 @@
+class MasaNoPositivaException < Exception
+
+end

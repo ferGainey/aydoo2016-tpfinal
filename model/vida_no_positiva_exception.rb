@@ -1,0 +1,3 @@
+class VidaNoPositivaException < Exception
+
+end

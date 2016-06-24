@@ -12,7 +12,13 @@ describe 'ObjetoEspacial' do
   end
 
   it 'debe lanzar una excepcion si se ingresa una vida inicial no mayor a 0' do
-    expect{ObjetoEspacial.new(-10, 400)}.to raise_exception(VidaNegativaException)
+    expect{ObjetoEspacial.new(-10, 400)}.to raise_exception(VidaNoPositivaException)
+    expect{ObjetoEspacial.new(0, 400)}.to raise_exception(VidaNoPositivaException)
+  end
+
+  it 'debe lanzar una excepcion si se ingresa una masa inicial no mayor a 0' do
+    expect{ObjetoEspacial.new(450, 0)}.to raise_exception(MasaNoPositivaException)
+    expect{ObjetoEspacial.new(450, -50)}.to raise_exception(MasaNoPositivaException)
   end
 
 end

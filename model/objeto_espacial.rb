@@ -1,4 +1,5 @@
-require_relative '../model/vida_negativa_exception'
+require_relative '../model/vida_no_positiva_exception'
+require_relative '../model/masa_no_positiva_exception'
 
 class ObjetoEspacial
 
@@ -8,9 +9,13 @@ class ObjetoEspacial
     if vida_inicial > 0
       @vida = vida_inicial
     else 
-      raise VidaNegativaException, "La vida inicial tiene que ser mayor a 0"
+      raise VidaNoPositivaException, "La vida inicial tiene que ser mayor a 0"
     end 
-    @masa = masa_inicial
+    if masa_inicial > 0
+      @masa = masa_inicial
+    else
+      raise MasaNoPositivaException, "La masa inicial tiene que ser mayor a 0"
+    end
   end
 
 end
