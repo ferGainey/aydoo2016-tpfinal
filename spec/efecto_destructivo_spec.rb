@@ -15,4 +15,8 @@ describe 'EfectoDestructivo' do
     expect(objeto_espacial.masa).to eq masa_esperada
   end
 
+it 'debe lanzar una excepcion si se inicializa con danio negativo' do
+    expect{EfectoDestructivo.new(-30)}.to raise_exception(DestruccionNegativaException)
+  end
+
 end

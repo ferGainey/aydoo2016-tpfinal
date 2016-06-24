@@ -1,0 +1,3 @@
+class DestruccionNegativaException < Exception
+
+end
