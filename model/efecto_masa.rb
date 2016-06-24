@@ -1,5 +1,7 @@
 class EfectoMasa
 
+	#el porcentaje puede ser ingresado entre "" o sin ellos
+	#el simbolo % no es obligatorio, pero si se usa hay que ponerlo entre ""
 	def initialize(objeto_recibidor_de_choque, porcentaje_de_masa)
 	  @objeto_recibidor_de_choque = objeto_recibidor_de_choque
 	  @porcentaje_de_masa = porcentaje_de_masa
