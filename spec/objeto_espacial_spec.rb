@@ -11,4 +11,8 @@ describe 'ObjetoEspacial' do
     expect(objeto_espacial.masa).to eq masa_esperada
   end
 
+  it 'debe lanzar una excepcion si se ingresa una vida inicial no mayor a 0' do
+    expect{ObjetoEspacial.new(-10, 400)}.to raise_exception(VidaNegativaException)
+  end
+
 end
