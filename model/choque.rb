@@ -23,7 +23,7 @@ class Choque
     @cuadro_de_choques = cuadro_de_choques_inicial
   end
 
-  def procesar_choque(objeto_espacial_generador_de_choque, objeto_espacial_recibidor_de_choque)
+  def procesar_choque(objeto_espacial_generador_de_choque, objeto_espacial_receptor_de_choque)
     
     posicion_del_vector_del_efecto = nil
     for num in 0...@indice.size
@@ -35,18 +35,17 @@ class Choque
 
     posicion_del_efecto = nil
     for num in 0...@indice.size
-      if @indice[num].class == objeto_espacial_recibidor_de_choque.class
+      if @indice[num].class == objeto_espacial_receptor_de_choque.class
         posicion_del_efecto = num
         num = @indice.size
       end
     end
+
+    efecto_a_ejecutar_sobre_generador_de_choque = @cuadro_de_choques[posicion_del_vector_del_efecto][posicion_del_efecto]
+    efecto_a_ejecutar_sobre_generador_de_choque.aplicar_efecto(objeto_espacial_generador_de_choque)
     
-    efecto_a_ejecutar = @cuadro_de_choques[posicion_del_vector_del_efecto][posicion_del_efecto]
-    #efecto_a_ejecutar = vector_del_efecto[0]
-    #efecto_a_ejecutar.aplicar_efecto(objeto_espacial_generador_de_choque)
-    efecto_a_ejecutar.aplicar_efecto(objeto_espacial_generador_de_choque)
-    #efecto = EfectoDestructivoPorUnidad.new(100)
-    #efecto.aplicar_efecto(objeto_espacial_generador_de_choque)
+    efecto_a_ejecutar_sobre_receptor_de_choque = @cuadro_de_choques[posicion_del_efecto][posicion_del_vector_del_efecto]
+    efecto_a_ejecutar_sobre_receptor_de_choque.aplicar_efecto(objeto_espacial_receptor_de_choque)
     
   end
 

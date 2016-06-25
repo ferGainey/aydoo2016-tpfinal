@@ -13,15 +13,18 @@ describe 'Nave' do
     expect(nave.masa).to eq masa_esperada
   end
 
-  it 'si una Nave choca con otra Nave sufre un efecto destructivo de 100 unidades' do
-    vida_esperada = 0    
-    masa_esperada = 400
+  it 'si una Nave choca con otra Nave sufre un efecto destructivo de 100 unidades las dos naves' do
+    vida_esperada = 0 
+    masa_objeto_generador_de_choque_esperada = 400
+    masa_objeto_receptor_de_choque_esperada = 900   
     procesador_de_choque = Choque.new
-    nave_generadora_de_choque = Nave.new(400,procesador_de_choque)
-    nave_recibidora_de_choque = Nave.new(900,procesador_de_choque)
-    nave_generadora_de_choque.chocar(nave_recibidora_de_choque)
+    nave_generadora_de_choque = Nave.new(400, procesador_de_choque)
+    nave_receptora_de_choque = Nave.new(900, procesador_de_choque)
+    nave_generadora_de_choque.chocar(nave_receptora_de_choque)
     expect(nave_generadora_de_choque.vida).to eq vida_esperada
-    expect(nave_generadora_de_choque.masa).to eq masa_esperada
+    expect(nave_generadora_de_choque.masa).to eq masa_objeto_generador_de_choque_esperada
+    expect(nave_receptora_de_choque.vida).to eq vida_esperada
+    expect(nave_receptora_de_choque.masa).to eq masa_objeto_receptor_de_choque_esperada
   end
 
 end
