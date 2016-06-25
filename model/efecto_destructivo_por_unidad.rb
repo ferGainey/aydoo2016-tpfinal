@@ -8,14 +8,14 @@ class EfectoDestructivoPorUnidad
   def initialize(danio_a_provocar_en_unidades)
     danio_recibido = danio_a_provocar_en_unidades
     if danio_recibido.to_f > 0
-	  @danio_a_provocar_en_unidades = danio_a_provocar_en_unidades
-	else
-	  raise DestruccionNegativaException, "No se pueda aplicar un danio negativo"
-	end
+	    @danio_a_provocar_en_unidades = danio_a_provocar_en_unidades
+	  else
+	    raise DestruccionNegativaException, "No se pueda aplicar un danio negativo"
+	  end
   end
 
   def aplicar_efecto(objeto_espacial)
-	objeto_espacial.vida -= @danio_a_provocar_en_unidades.to_f
+	  objeto_espacial.vida -= @danio_a_provocar_en_unidades.to_f
   end
 				  
 end

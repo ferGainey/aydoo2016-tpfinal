@@ -16,7 +16,7 @@ class EfectoDestructivoPorPorcentaje
   end
 
   def aplicar_efecto(objeto_espacial)
-    objeto_espacial.vida = objeto_espacial.vida * ((@danio_a_provocar_en_porcentaje.to_f)/100)
+    objeto_espacial.vida -= objeto_espacial.vida * ((@danio_a_provocar_en_porcentaje.to_f)/100)
   end
 				
 end
