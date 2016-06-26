@@ -91,4 +91,19 @@ describe 'Nave' do
     expect(asteroide.masa).to eq masa_esperada_asteroide
   end
 
+  it 'si una Nave choca con una estrella aumenta su vida en una cantidad igual a la vida de la estrella, y la estrella sufre un danio destructivo del 100 porciento' do
+    vida_esperada_nave = 200 
+    masa_esperada_nave = 400
+    vida_esperada_estrella = 0
+    masa_esperada_estrella = 800    
+    procesador_de_choque = Choque.new
+    nave_generadora_de_choque = Nave.new(400, procesador_de_choque)
+    estrella = Estrella.new(800, procesador_de_choque)
+    nave_generadora_de_choque.chocar(estrella)
+    expect(nave_generadora_de_choque.vida).to eq vida_esperada_nave
+    expect(nave_generadora_de_choque.masa).to eq masa_esperada_nave
+    expect(estrella.vida).to eq vida_esperada_estrella
+    expect(estrella.masa).to eq masa_esperada_estrella
+  end
+
 end
