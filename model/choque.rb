@@ -82,10 +82,12 @@ class Choque
     efecto_asteroide_nave = EfectoMasa.new("10")
     efecto_asteroide_misil = EfectoNulo.new
     efecto_asteroide_bomba = EfectoNulo.new
+    efecto_asteroide_asteroide = EfectoNulo.new
     #agrego los efectos a la fila del asteroide
     choques_de_asteroide << efecto_asteroide_nave
     choques_de_asteroide << efecto_asteroide_misil
     choques_de_asteroide << efecto_asteroide_bomba
+    choques_de_asteroide << efecto_asteroide_asteroide
 
     #cargo los efectos de la fila de la estrella
     efecto_estrella_nave = EfectoDestructivoPorPorcentaje.new("100")
