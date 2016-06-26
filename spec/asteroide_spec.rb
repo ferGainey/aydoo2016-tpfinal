@@ -46,4 +46,19 @@ describe 'Asteroide' do
     expect(misil.vida).to eq vida_esperada_misil
     expect(misil.masa).to eq masa_esperada_misil
   end
+
+  it 'si un asteroide choca con una bomba sufre efecto nulo, mientras la bomba sufre un efecto destructivo del 100 porciento' do
+    vida_esperada_bomba = 0 
+    masa_esperada_bomba = 350
+    vida_esperada_asteroide = 100
+    masa_esperada_asteriode = 700    
+    procesador_de_choque = Choque.new
+    asteroide_generador_de_choque = Asteroide.new(700, procesador_de_choque)
+    bomba = Bomba.new(350, procesador_de_choque)
+    asteroide_generador_de_choque.chocar(bomba)
+    expect(asteroide_generador_de_choque.vida).to eq vida_esperada_asteroide
+    expect(asteroide_generador_de_choque.masa).to eq masa_esperada_asteriode
+    expect(bomba.vida).to eq vida_esperada_bomba
+    expect(bomba.masa).to eq masa_esperada_bomba
+  end
 end
