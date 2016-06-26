@@ -2,6 +2,7 @@ require 'rspec'
 require_relative '../model/misil'
 require_relative '../model/nave'
 require_relative '../model/bomba'
+require_relative '../model/asteroide'
 require_relative '../model/choque'
 
 describe 'Misil' do
@@ -55,6 +56,21 @@ describe 'Misil' do
     misil_generador_de_choque.chocar(bomba)
     expect(bomba.vida).to eq vida_esperada_bomba
     expect(bomba.masa).to eq masa_esperada_bomba
+    expect(misil_generador_de_choque.vida).to eq vida_esperada_misil
+    expect(misil_generador_de_choque.masa).to eq masa_esperada_misil
+  end
+
+  it 'si un misil choca un asteroide ambos sufren efecto nulo' do
+    vida_esperada_misil = 100 
+    masa_esperada_misil = 400
+    vida_esperada_asteroide = 100
+    masa_esperada_asteroide = 700    
+    procesador_de_choque = Choque.new
+    asteroide = Asteroide.new(700, procesador_de_choque)
+    misil_generador_de_choque = Misil.new(400, procesador_de_choque)
+    misil_generador_de_choque.chocar(asteroide)
+    expect(asteroide.vida).to eq vida_esperada_asteroide
+    expect(asteroide.masa).to eq masa_esperada_asteroide
     expect(misil_generador_de_choque.vida).to eq vida_esperada_misil
     expect(misil_generador_de_choque.masa).to eq masa_esperada_misil
   end
