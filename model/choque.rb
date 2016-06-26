@@ -123,6 +123,12 @@ class Choque
     efecto_a_ejecutar_sobre_generador_de_choque = @cuadro_de_choques[posicion_del_vector_del_efecto][posicion_del_efecto]
     efecto_a_ejecutar_sobre_generador_de_choque.aplicar_efecto(objeto_espacial_generador_de_choque, objeto_espacial_receptor_de_choque)
   end
+  
+  def cambiar_efecto(objeto_generador_de_choque, objeto_receptor_de_choque, nuevo_efecto)
+    posicion_del_vector_del_efecto = buscar_posicion_del_vector_del_efecto(objeto_generador_de_choque)
+    posicion_del_efecto = buscar_posicion_del_efecto(objeto_receptor_de_choque)
+    @cuadro_de_choques[posicion_del_vector_del_efecto][posicion_del_efecto] = nuevo_efecto
+  end
 
   private
   def buscar_posicion_del_vector_del_efecto(objeto_espacial_generador_de_choque)
