@@ -4,6 +4,7 @@ require_relative '../model/masa_no_positiva_exception'
 class ObjetoEspacial
 
   attr_accessor :vida, :masa, :procesador_de_choque
+  attr_reader :vivo
 
   def initialize(masa_inicial, procesador_de_choque)
     @vida = 100
@@ -24,14 +25,13 @@ class ObjetoEspacial
     end 
   end
 
-  def esta_vivo?
+  def verificar_estado
     if @vida > 0
       @vivo = true
     else
       @vida = 0
       @vivo = false
     end
-  return @vivo
   end
 
 end

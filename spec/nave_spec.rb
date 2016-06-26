@@ -27,4 +27,19 @@ describe 'Nave' do
     expect(nave_receptora_de_choque.masa).to eq masa_objeto_receptor_de_choque_esperada
   end
 
+  it 'si una Nave tiene' do
+    vida_esperada = 0 
+    masa_objeto_generador_de_choque_esperada = 400
+    masa_objeto_receptor_de_choque_esperada = 900   
+    procesador_de_choque = Choque.new
+    nave_generadora_de_choque = Nave.new(400, procesador_de_choque)
+    nave_generadora_de_choque.set_vida(30)
+    nave_receptora_de_choque = Nave.new(900, procesador_de_choque)
+    nave_generadora_de_choque.chocar(nave_receptora_de_choque)
+    #la nave_generadora_del_choque va a tener -70, pero como en los ejemplos dados cuando habia
+    #un numero negativo pasaba a 0. Entonces aca va a pasar lo mismo
+    expect(nave_generadora_de_choque.vida).to eq vida_esperada
+    expect(nave_generadora_de_choque.masa).to eq masa_objeto_generador_de_choque_esperada
+  end
+
 end
