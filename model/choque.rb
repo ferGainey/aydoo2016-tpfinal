@@ -70,11 +70,13 @@ class Choque
     efecto_bomba_misil = EfectoDestructivoPorPorcentaje.new("50")
     efecto_bomba_bomba = EfectoDestructivoPorUnidad.new("100")
     efecto_bomba_asteroide = EfectoDestructivoPorPorcentaje.new("100")
+    efecto_bomba_estrella = EfectoDestructivoPorUnidad.new("100")
     #agrego los efectos a la fila de la bomba
     choques_de_bomba << efecto_bomba_nave
     choques_de_bomba << efecto_bomba_misil
     choques_de_bomba << efecto_bomba_bomba
     choques_de_bomba << efecto_bomba_asteroide
+    choques_de_bomba << efecto_bomba_estrella
    
     #cargo los efectos de la fila del asteroide
     efecto_asteroide_nave = EfectoMasa.new("10")
@@ -88,9 +90,11 @@ class Choque
     #cargo los efectos de la fila de la estrella
     efecto_estrella_nave = EfectoDestructivoPorPorcentaje.new("100")
     efecto_estrella_misil = EfectoNulo.new
+    efecto_estrella_bomba = EfectoDestructivoPorPorcentaje.new("100")
     #cargo los efectos a la fila de la estrella
     choques_de_estrella << efecto_estrella_nave
     choques_de_estrella << efecto_estrella_misil
+    choques_de_estrella << efecto_estrella_bomba
 
     #cargo los efectos del choque en sus respectivas filas y columnas
     cuadro_de_choques_inicial = []

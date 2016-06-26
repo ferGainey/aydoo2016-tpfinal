@@ -77,4 +77,20 @@ describe 'Bomba' do
     expect(bomba_generadora_de_choque.masa).to eq masa_esperada_bomba_generadora_de_choque
   end
 
+  it 'si una bomba choca una estrella sufre un efecto destructivo de 100 unidades, mientras que la estrella sufre un efecto destructivo del 100 porciento' do
+    vida_esperada_bomba_generadora_de_choque = 0 
+    masa_esperada_bomba_generadora_de_choque = 450
+    vida_esperada_estrella = 0
+    masa_esperada_estrella = 700    
+    procesador_de_choque = Choque.new
+    estrella = Estrella.new(700, procesador_de_choque)
+    bomba_generadora_de_choque = Bomba.new(450, procesador_de_choque)
+    bomba_generadora_de_choque.chocar(estrella)
+    expect(estrella.vida).to eq vida_esperada_estrella
+    expect(estrella.masa).to eq masa_esperada_estrella
+    expect(bomba_generadora_de_choque.vida).to eq vida_esperada_bomba_generadora_de_choque
+    expect(bomba_generadora_de_choque.masa).to eq masa_esperada_bomba_generadora_de_choque
+  end
+
+
 end
