@@ -13,4 +13,19 @@ describe 'Bomba' do
     expect(bomba.masa).to eq masa_esperada
   end
 
+  it 'si una bomba choca con una nave sufre un efecto destructivo de 100 unidades, y la nave de 50' do
+    vida_esperada_nave = 50 
+    masa_esperada_nave = 400
+    vida_esperada_bomba = 0
+    masa_esperada_bomba = 800    
+    procesador_de_choque = Choque.new
+    bomba_generadora_de_choque = Bomba.new(800, procesador_de_choque)
+    nave = Nave.new(400, procesador_de_choque)
+    bomba_generadora_de_choque.chocar(nave)
+    expect(bomba_generadora_de_choque.vida).to eq vida_esperada_bomba
+    expect(bomba_generadora_de_choque.masa).to eq masa_esperada_bomba
+    expect(nave.vida).to eq vida_esperada_nave
+    expect(nave.masa).to eq masa_esperada_nave
+  end
+
 end

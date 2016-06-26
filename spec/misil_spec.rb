@@ -90,4 +90,5 @@ describe 'Misil' do
     expect(misil_generador_de_choque.vida).to eq vida_esperada_misil
     expect(misil_generador_de_choque.masa).to eq masa_esperada_misil
   end
+  
 end

@@ -31,7 +31,7 @@ describe 'Nave' do
     expect(nave_receptora_de_choque.masa).to eq masa_objeto_receptor_de_choque_esperada
   end
 
-  it 'si una Nave tiene' do
+  it 'si una Nave tiene vida menor a 0 entonces no esta viva, y su valor se iguala a 0' do
     vida_esperada = 0 
     masa_objeto_generador_de_choque_esperada = 400
     masa_objeto_receptor_de_choque_esperada = 900   
