@@ -5,6 +5,7 @@ require_relative '../model/bomba'
 require_relative '../model/asteroide'
 require_relative '../model/estrella'
 require_relative '../model/choque'
+require_relative '../model/efecto_destructivo_por_unidad'
 
 describe 'Nave' do
 

@@ -10,7 +10,7 @@ class EfectoDestructivoPorUnidad
     if danio_recibido.to_f > 0
 	    @danio_a_provocar_en_unidades = danio_a_provocar_en_unidades
 	  else
-	    raise DestruccionNegativaException, "No se pueda aplicar un danio negativo"
+	    raise DestruccionNegativaException.new("No se pueda aplicar un danio negativo")
 	  end
   end
 

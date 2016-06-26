@@ -1,0 +1,3 @@
+class ObjetoMuertoException < Exception
+
+end

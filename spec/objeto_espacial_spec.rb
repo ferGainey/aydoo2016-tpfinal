@@ -3,6 +3,7 @@ require_relative '../model/objeto_espacial'
 require_relative '../model/efecto_masa'
 require_relative '../model/efecto_destructivo_por_unidad'
 require_relative '../model/choque'
+require_relative '../model/objeto_muerto_exception'
 
 describe 'ObjetoEspacial' do
 
@@ -101,4 +102,14 @@ describe 'ObjetoEspacial' do
     expect(objeto_espacial_generador_de_choque.vivo).to eq false
   end
 
+  it 'si un objeto espacial esta muerto, entonces no puede interactuar' do 
+    procesador_de_choque = Choque.new
+    objeto_espacial_generador_de_choque = ObjetoEspacial.new(400, procesador_de_choque)
+    objeto_espacial_generador_de_choque.set_vida(30)
+    objeto_espacial_receptor_de_choque = ObjetoEspacial.new(900, procesador_de_choque)
+    efecto_destructivo_por_unidad = EfectoDestructivoPorUnidad.new(1000)
+    efecto_destructivo_por_unidad.aplicar_efecto(objeto_espacial_generador_de_choque, objeto_espacial_receptor_de_choque)
+    objeto_espacial_generador_de_choque.verificar_estado
+    expect{objeto_espacial_generador_de_choque.chocar(objeto_espacial_receptor_de_choque)}.to raise_exception(ObjetoMuertoException)
+  end
 end

@@ -1,5 +1,6 @@
 require_relative '../model/vida_no_positiva_exception'
 require_relative '../model/masa_no_positiva_exception'
+require_relative '../model/objeto_muerto_exception'
 
 class ObjetoEspacial
 
@@ -11,18 +12,22 @@ class ObjetoEspacial
     if masa_inicial > 0
       @masa = masa_inicial
     else
-      raise MasaNoPositivaException, "La masa inicial tiene que ser mayor a 0"
+      raise MasaNoPositivaException.new("La masa inicial tiene que ser mayor a 0")
     end
       @procesador_de_choque = procesador_de_choque
       @vivo = true
   end
 
   def chocar(objeto_espacial)
-    objeto_receptor_de_choque = objeto_espacial.clone
-    objeto_espacial.procesador_de_choque.procesar_choque(objeto_espacial, self)
-    self.procesador_de_choque.procesar_choque(self, objeto_receptor_de_choque)
-    objeto_espacial.verificar_estado
-    self.verificar_estado
+    if self.vivo
+      objeto_receptor_de_choque = objeto_espacial.clone
+      objeto_espacial.procesador_de_choque.procesar_choque(objeto_espacial, self)
+      self.procesador_de_choque.procesar_choque(self, objeto_receptor_de_choque)
+      objeto_espacial.verificar_estado
+      self.verificar_estado
+    else
+      raise ObjetoMuertoException.new("Un objeto muerto no puede interactuar")
+    end
   end
 
 
@@ -30,7 +35,7 @@ class ObjetoEspacial
     if vida > 0
       @vida = vida
     else 
-      raise VidaNoPositivaException, "La vida inicial tiene que ser mayor a 0"
+      raise VidaNoPositivaException.new("La vida inicial tiene que ser mayor a 0")
     end 
   end
 
