@@ -28,4 +28,19 @@ describe 'Bomba' do
     expect(nave.masa).to eq masa_esperada_nave
   end
 
+  it 'si una bomba choca un misil sufre un efecto destructivo del 50 porciento, y el misil efecto nulo' do
+    vida_esperada_misil = 100 
+    masa_esperada_misil = 500
+    vida_esperada_bomba = 50
+    masa_esperada_bomba = 450    
+    procesador_de_choque = Choque.new
+    misil = Misil.new(500, procesador_de_choque)
+    bomba_generador_de_choque = Bomba.new(450, procesador_de_choque)
+    bomba_generador_de_choque.chocar(misil)
+    expect(misil.vida).to eq vida_esperada_misil
+    expect(misil.masa).to eq masa_esperada_misil
+    expect(bomba_generador_de_choque.vida).to eq vida_esperada_bomba
+    expect(bomba_generador_de_choque.masa).to eq masa_esperada_bomba
+  end
+
 end
