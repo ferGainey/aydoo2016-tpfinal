@@ -58,4 +58,19 @@ describe 'Estrella' do
     expect(bomba.masa).to eq masa_esperada_bomba
   end
 
+  it 'si una estrella choca con un asteroide ambos sufren efecto nulo' do
+    vida_esperada_asteroide = 100 
+    masa_esperada_asteriode = 550
+    vida_esperada_estrella = 100
+    masa_esperada_estrella = 250    
+    procesador_de_choque = Choque.new
+    asteroide = Asteroide.new(550, procesador_de_choque)
+    estrella_generadora_de_choque = Estrella.new(250, procesador_de_choque)
+    estrella_generadora_de_choque.chocar(asteroide)
+    expect(asteroide.vida).to eq vida_esperada_asteroide
+    expect(asteroide.masa).to eq masa_esperada_asteriode
+    expect(estrella_generadora_de_choque.vida).to eq vida_esperada_estrella
+    expect(estrella_generadora_de_choque.masa).to eq masa_esperada_estrella
+  end
+
 end
