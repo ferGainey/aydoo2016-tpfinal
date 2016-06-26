@@ -80,7 +80,7 @@ describe 'Nave' do
     vida_esperada_nave = 100 
     masa_esperada_nave = 200
     vida_esperada_asteroide = 100
-    masa_esperada_asteroide = 820    
+    masa_esperada_asteroide = 860    
     procesador_de_choque = Choque.new
     nave_generadora_de_choque = Nave.new(600, procesador_de_choque)
     asteroide = Asteroide.new(800, procesador_de_choque)
