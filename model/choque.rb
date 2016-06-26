@@ -26,8 +26,10 @@ class Choque
     choques_de_nave << efecto_nave_misil
     #cargo los efectos de la fila del misil
     efecto_misil_nave = EfectoDestructivoPorUnidad.new("100")
+    efecto_misil_misil = EfectoDestructivoPorUnidad.new("100")
     #agrego los efectos a la fila del misil
     choques_de_misil << efecto_misil_nave
+    choques_de_misil << efecto_misil_misil
     #cargo los efectos del choque en sus respectivas filas y columnas
     cuadro_de_choques_inicial = []
     cuadro_de_choques_inicial << choques_de_nave
