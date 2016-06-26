@@ -31,21 +31,6 @@ describe 'Nave' do
     expect(nave_receptora_de_choque.masa).to eq masa_objeto_receptor_de_choque_esperada
   end
 
-  it 'si una Nave tiene vida menor a 0 entonces no esta viva, y su valor se iguala a 0' do
-    vida_esperada = 0 
-    masa_objeto_generador_de_choque_esperada = 400
-    masa_objeto_receptor_de_choque_esperada = 900   
-    procesador_de_choque = Choque.new
-    nave_generadora_de_choque = Nave.new(400, procesador_de_choque)
-    nave_generadora_de_choque.set_vida(30)
-    nave_receptora_de_choque = Nave.new(900, procesador_de_choque)
-    nave_generadora_de_choque.chocar(nave_receptora_de_choque)
-    #la nave_generadora_del_choque va a tener -70, pero como en los ejemplos dados cuando habia
-    #un numero negativo pasaba a 0. Entonces aca va a pasar lo mismo
-    expect(nave_generadora_de_choque.vida).to eq vida_esperada
-    expect(nave_generadora_de_choque.masa).to eq masa_objeto_generador_de_choque_esperada
-  end
-
   it 'si una Nave choca con un misil sufre un efecto destructivo de 80 unidades, y el misil 100' do
     vida_esperada_nave = 20 
     masa_esperada_nave = 400
@@ -106,29 +91,4 @@ describe 'Nave' do
     expect(estrella.masa).to eq masa_esperada_estrella
   end
 
-  
-  it 'si un objeto espacial tiene masa menor a 0, su masa pasa a ser 0, y no esta vivo' do
-    vida_esperada = 100
-    masa_objeto_generador_de_choque_esperada = 0  
-    procesador_de_choque = Choque.new
-    nave = Nave.new(100, procesador_de_choque)
-    asteroide = Asteroide.new(900, procesador_de_choque)
-    nave.chocar(asteroide)
-    #la nave va a tener -350 de masa, pero como la masa no puede ser negativa, entonces pasa a 0
-    expect(nave.vida).to eq vida_esperada
-    expect(nave.masa).to eq masa_objeto_generador_de_choque_esperada
-  end
-
-  it 'si un objeto espacial tiene masa menor a 0, su masa pasa a ser 0, y no esta vivo' do
-    vida_esperada = 100
-    masa_objeto_generador_de_choque_esperada = 0  
-    procesador_de_choque = Choque.new
-    nave = Nave.new(100, procesador_de_choque)
-    asteroide = Asteroide.new(900, procesador_de_choque)
-    nave.chocar(asteroide)
-    #la nave va a tener -350 de masa, pero como la masa no puede ser negativa, entonces pasa a 0
-    expect(nave.vida).to eq vida_esperada
-    expect(nave.masa).to eq masa_objeto_generador_de_choque_esperada
-  end
-  
 end
