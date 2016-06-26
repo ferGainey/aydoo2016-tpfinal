@@ -50,7 +50,26 @@ describe 'ObjetoEspacial' do
     objeto_espacial_generador_de_choque.verificar_estado
     expect(objeto_espacial_generador_de_choque.vida).to eq vida_esperada
     expect(objeto_espacial_generador_de_choque.masa).to eq masa_objeto_generador_de_choque_esperada
+    expect(objeto_espacial_generador_de_choque.vivo).to eq false
   end
+
+  it 'si un objeto espacial tiene vida igual a 0 entonces no esta vivo' do
+    vida_esperada = 0 
+    masa_objeto_generador_de_choque_esperada = 400
+    masa_objeto_receptor_de_choque_esperada = 900   
+    procesador_de_choque = Choque.new
+    objeto_espacial_generador_de_choque = ObjetoEspacial.new(400, procesador_de_choque)
+    objeto_espacial_generador_de_choque.set_vida(30)
+    objeto_espacial_receptor_de_choque = ObjetoEspacial.new(900, procesador_de_choque)
+    efecto_destructivo_por_unidad = EfectoDestructivoPorUnidad.new(100)
+    efecto_destructivo_por_unidad.aplicar_efecto(objeto_espacial_generador_de_choque, objeto_espacial_receptor_de_choque)
+    #el objeto espacial generador_del_choque va a tener 0
+    objeto_espacial_generador_de_choque.verificar_estado
+    expect(objeto_espacial_generador_de_choque.vida).to eq vida_esperada
+    expect(objeto_espacial_generador_de_choque.masa).to eq masa_objeto_generador_de_choque_esperada
+    expect(objeto_espacial_generador_de_choque.vivo).to eq false
+  end
+
 
   it 'si un objeto espacial tiene masa menor a 0, su masa pasa a ser 0, y no esta vivo' do
     vida_esperada = 100
