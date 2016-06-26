@@ -26,11 +26,30 @@ class ObjetoEspacial
   end
 
   def verificar_estado
+    if (!tiene_vida?)
+      @vivo = false
+    end
+    if (!tiene_masa?)
+      @vivo = false
+    end
+  end
+  
+  private
+  def tiene_vida?
     if @vida > 0
-      @vivo = true
+      return true
     else
       @vida = 0
-      @vivo = false
+      return false
+    end
+  end
+
+  def tiene_masa?
+    if @masa > 0
+      return true
+    else
+      @masa = 0
+      return false
     end
   end
 

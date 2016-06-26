@@ -106,4 +106,16 @@ describe 'Nave' do
     expect(estrella.masa).to eq masa_esperada_estrella
   end
 
+  
+  it 'si un objeto espacial tiene masa menor a 0, su masa pasa a ser 0, y no esta vivo' do
+    vida_esperada = 100
+    masa_objeto_generador_de_choque_esperada = 0  
+    procesador_de_choque = Choque.new
+    nave = Nave.new(100, procesador_de_choque)
+    asteroide = Asteroide.new(900, procesador_de_choque)
+    nave.chocar(asteroide)
+    #la nave va a tener -350 de masa, pero como la masa no puede ser negativa, entonces pasa a 0
+    expect(nave.vida).to eq vida_esperada
+    expect(nave.masa).to eq masa_objeto_generador_de_choque_esperada
+  end
 end
