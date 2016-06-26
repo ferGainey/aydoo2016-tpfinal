@@ -1,5 +1,7 @@
 require 'rspec' 
 require_relative '../model/misil'
+require_relative '../model/nave'
+require_relative '../model/bomba'
 require_relative '../model/choque'
 
 describe 'Misil' do
@@ -21,7 +23,7 @@ describe 'Misil' do
     procesador_de_choque = Choque.new
     nave = Nave.new(400, procesador_de_choque)
     misil_generador_de_choque = Misil.new(900, procesador_de_choque)
-    nave.chocar(misil_generador_de_choque)
+    misil_generador_de_choque.chocar(nave)
     expect(nave.vida).to eq vida_esperada_nave
     expect(nave.masa).to eq masa_esperada_nave
     expect(misil_generador_de_choque.vida).to eq vida_esperada_misil
@@ -40,5 +42,20 @@ describe 'Misil' do
     expect(misil_generador_de_choque.masa).to eq masa_objeto_generador_de_choque_esperada
     expect(misil_receptor_de_choque.vida).to eq vida_esperada
     expect(misil_receptor_de_choque.masa).to eq masa_objeto_receptor_de_choque_esperada
+  end
+
+  it 'si un misil choca una bomba sufre efecto nulo, y la bomba un efecto destructivo del 50 porciento' do
+    vida_esperada_misil = 100 
+    masa_esperada_misil = 400
+    vida_esperada_bomba = 50
+    masa_esperada_bomba = 900    
+    procesador_de_choque = Choque.new
+    bomba = Bomba.new(900, procesador_de_choque)
+    misil_generador_de_choque = Misil.new(400, procesador_de_choque)
+    misil_generador_de_choque.chocar(bomba)
+    expect(bomba.vida).to eq vida_esperada_bomba
+    expect(bomba.masa).to eq masa_esperada_bomba
+    expect(misil_generador_de_choque.vida).to eq vida_esperada_misil
+    expect(misil_generador_de_choque.masa).to eq masa_esperada_misil
   end
 end

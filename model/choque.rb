@@ -7,6 +7,7 @@ require_relative '../model/efecto_destructivo_por_unidad'
 require_relative '../model/efecto_masa'
 require_relative '../model/efecto_constructivo'
 require_relative '../model/efecto_destructivo_por_porcentaje'
+require_relative '../model/efecto_nulo'
 
 class Choque
 
@@ -53,14 +54,18 @@ class Choque
     #cargo los efectos de la fila del misil
     efecto_misil_nave = EfectoDestructivoPorUnidad.new("100")
     efecto_misil_misil = EfectoDestructivoPorUnidad.new("100")
+    efecto_misil_bomba = EfectoNulo.new
     #agrego los efectos a la fila del misil
     choques_de_misil << efecto_misil_nave
     choques_de_misil << efecto_misil_misil
+    choques_de_misil << efecto_misil_bomba
 
     #cargo los efectos de la fila de la bomba
     efecto_bomba_nave = EfectoDestructivoPorUnidad.new("100")
-    #agrego los efectos a la fila del bomba
+    efecto_bomba_misil = EfectoDestructivoPorPorcentaje.new("50")
+    #agrego los efectos a la fila de la bomba
     choques_de_bomba << efecto_bomba_nave
+    choques_de_bomba << efecto_bomba_misil
    
     #cargo los efectos de la fila del asteroide
     efecto_asteroide_nave = EfectoMasa.new("10")
