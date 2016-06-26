@@ -117,9 +117,7 @@ class Choque
 
   def procesar_choque(objeto_espacial_generador_de_choque, objeto_espacial_receptor_de_choque)
     posicion_del_vector_del_efecto = buscar_posicion_del_vector_del_efecto(objeto_espacial_generador_de_choque)
-
     posicion_del_efecto = buscar_posicion_del_efecto(objeto_espacial_receptor_de_choque)
-
     efecto_a_ejecutar_sobre_generador_de_choque = @cuadro_de_choques[posicion_del_vector_del_efecto][posicion_del_efecto]
     efecto_a_ejecutar_sobre_generador_de_choque.aplicar_efecto(objeto_espacial_generador_de_choque, objeto_espacial_receptor_de_choque)
   end
@@ -130,6 +128,19 @@ class Choque
     @cuadro_de_choques[posicion_del_vector_del_efecto][posicion_del_efecto] = nuevo_efecto
   end
 
+
+=begin
+ este metodo anda, pero lo dejo comentado, porque para probarlo se necesitaria que exista un nuevo objeto espacial, y agregarlo
+ hice la prueba haciendo eso, y funciono de manera correcta
+ no lo borro, porque quiero mostrar que no presentaria ninguna dificultad poder extender este disenio a nuevos objetos espaciales
+  #si se agrega un nuevo efecto todas sus interacciones seran con EfectoNulo por defecto, pero se pueden cambiar
+  def agregar_un_nuevo_objeto_espacial(nuevo_objeto_espacial)
+    @indice << nuevo_objeto_espacial
+    agregar_efecto_nulo_a_la_columna_perteneciente_al_nuevo_objeto
+    nueva_fila_perteneciente_al_nuevo_objeto = crear_una_fila_de_efecto_nulo
+    @cuadro_de_choques << nueva_fila_perteneciente_al_nuevo_objeto
+  end
+=end
   private
   def buscar_posicion_del_vector_del_efecto(objeto_espacial_generador_de_choque)
     posicion_del_vector_del_efecto = nil
@@ -152,5 +163,20 @@ class Choque
     end
     return posicion_del_efecto
   end
+=begin
+#metodos pertenecientes a: agregar_un_nuevo_objeto_espacial(nuevo_objeto_espacial)
+  def agregar_efecto_nulo_a_la_columna_perteneciente_al_nuevo_objeto
+    for num in 0...@cuadro_de_choques.size
+      @cuadro_de_choques[num] << EfectoNulo.new
+    end
+  end
 
+  def crear_una_fila_de_efecto_nulo
+    nueva_fila_perteneciente_al_nuevo_objeto = []
+    for num in 0...@indice.size
+      nueva_fila_perteneciente_al_nuevo_objeto << EfectoNulo.new
+    end 
+    return nueva_fila_perteneciente_al_nuevo_objeto 	
+  end
+=end
 end
