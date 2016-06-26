@@ -10,9 +10,9 @@ describe 'EfectoConstructivo' do
     masa_esperada = 220
     procesador_de_choque = Choque.new
     objeto_provocador_de_choque = ObjetoEspacial.new(220, procesador_de_choque)
-    objeto_recibidor_de_choque = ObjetoEspacial.new(80, procesador_de_choque)
-    efecto_constructivo = EfectoConstructivo.new(objeto_recibidor_de_choque)
-    efecto_constructivo.aplicar_efecto(objeto_provocador_de_choque)
+    objeto_receptor_de_choque = ObjetoEspacial.new(80, procesador_de_choque)
+    efecto_constructivo = EfectoConstructivo.new
+    efecto_constructivo.aplicar_efecto(objeto_provocador_de_choque, objeto_receptor_de_choque)
     expect(objeto_provocador_de_choque.vida).to eq vida_esperada
     expect(objeto_provocador_de_choque.masa).to eq masa_esperada
   end

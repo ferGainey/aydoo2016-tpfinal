@@ -1,11 +1,7 @@
 class EfectoConstructivo
 
-  def initialize(objeto_recibidor_de_choque)
-    @objeto_recibidor_de_choque = objeto_recibidor_de_choque
-  end
-
-  def aplicar_efecto(objeto_espacial)
-    objeto_espacial.vida += @objeto_recibidor_de_choque.vida  
+  def aplicar_efecto(objeto_espacial, objeto_receptor_de_choque)
+    objeto_espacial.vida += objeto_receptor_de_choque.vida  
   end
 				
 end

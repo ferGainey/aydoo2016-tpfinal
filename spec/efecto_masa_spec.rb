@@ -10,9 +10,9 @@ describe 'EfectoMasa' do
     masa_esperada = 2500
     procesador_de_choque = Choque.new
     objeto_generador_de_choque = ObjetoEspacial.new(2000, procesador_de_choque)
-    objeto_recibidor_de_choque = ObjetoEspacial.new(1000, procesador_de_choque)
-    efecto_masa = EfectoMasa.new(objeto_recibidor_de_choque, "50%")
-    efecto_masa.aplicar_efecto(objeto_generador_de_choque)
+    objeto_receptor_de_choque = ObjetoEspacial.new(1000, procesador_de_choque)
+    efecto_masa = EfectoMasa.new("50%")
+    efecto_masa.aplicar_efecto(objeto_generador_de_choque, objeto_receptor_de_choque)
     expect(objeto_generador_de_choque.vida).to eq vida_esperada
     expect(objeto_generador_de_choque.masa).to eq masa_esperada
   end 
@@ -22,9 +22,9 @@ describe 'EfectoMasa' do
     masa_esperada = 1500
     procesador_de_choque = Choque.new
     objeto_generador_de_choque = ObjetoEspacial.new(2000, procesador_de_choque)
-    objeto_recibidor_de_choque = ObjetoEspacial.new(1000, procesador_de_choque)
-    efecto_masa = EfectoMasa.new(objeto_recibidor_de_choque, "-50%")
-    efecto_masa.aplicar_efecto(objeto_generador_de_choque)
+    objeto_receptor_de_choque = ObjetoEspacial.new(1000, procesador_de_choque)
+    efecto_masa = EfectoMasa.new("-50%")
+    efecto_masa.aplicar_efecto(objeto_generador_de_choque, objeto_receptor_de_choque)
     expect(objeto_generador_de_choque.vida).to eq vida_esperada
     expect(objeto_generador_de_choque.masa).to eq masa_esperada
   end 

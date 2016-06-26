@@ -13,6 +13,7 @@ class ObjetoEspacial
       raise MasaNoPositivaException, "La masa inicial tiene que ser mayor a 0"
     end
       @procesador_de_choque = procesador_de_choque
+      @vivo = true
   end
 
   def set_vida(vida)
@@ -21,6 +22,16 @@ class ObjetoEspacial
     else 
       raise VidaNoPositivaException, "La vida inicial tiene que ser mayor a 0"
     end 
+  end
+
+  def esta_vivo?
+    if @vida > 0
+      @vivo = true
+    else
+      @vida = 0
+      @vivo = false
+    end
+  return @vivo
   end
 
 end

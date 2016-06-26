@@ -26,4 +26,10 @@ describe 'ObjetoEspacial' do
     expect{ObjetoEspacial.new(-50, procesador_de_choque)}.to raise_exception(MasaNoPositivaException)
   end
 
+    it 'si la vida es mayor a 0 entonces esta vivo' do
+    procesador_de_choque = Choque.new
+    objeto_espacial = ObjetoEspacial.new(200, procesador_de_choque)
+    expect(objeto_espacial.esta_vivo?).to eq true
+  end
+
 end
