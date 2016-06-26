@@ -1,0 +1,3 @@
+class ObjetoGenericoException < Exception
+
+end
