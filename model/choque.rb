@@ -13,6 +13,7 @@ class Choque
 
   attr_accessor :indice, :cuadro_de_choques
 
+  #la inicializacion tiene muchas lineas, pero no hay ninguna logica compleja dentro, solo se cargan los datos de los choques recibidos por defecto
   def initialize
     #cargo los objetos espaciales
     nave = Nave.new(100,self)
@@ -56,11 +57,13 @@ class Choque
     efecto_misil_misil = EfectoDestructivoPorUnidad.new("100")
     efecto_misil_bomba = EfectoNulo.new
     efecto_misil_asteroide = EfectoNulo.new
+    efecto_misil_estrella = EfectoNulo.new
     #agrego los efectos a la fila del misil
     choques_de_misil << efecto_misil_nave
     choques_de_misil << efecto_misil_misil
     choques_de_misil << efecto_misil_bomba
     choques_de_misil << efecto_misil_asteroide
+    choques_de_misil << efecto_misil_estrella
 
     #cargo los efectos de la fila de la bomba
     efecto_bomba_nave = EfectoDestructivoPorUnidad.new("100")
@@ -78,8 +81,10 @@ class Choque
 
     #cargo los efectos de la fila de la estrella
     efecto_estrella_nave = EfectoDestructivoPorPorcentaje.new("100")
+    efecto_estrella_misil = EfectoNulo.new
     #cargo los efectos a la fila de la estrella
     choques_de_estrella << efecto_estrella_nave
+    choques_de_estrella << efecto_estrella_misil
 
     #cargo los efectos del choque en sus respectivas filas y columnas
     cuadro_de_choques_inicial = []

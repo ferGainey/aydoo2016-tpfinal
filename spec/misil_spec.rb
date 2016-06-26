@@ -3,6 +3,7 @@ require_relative '../model/misil'
 require_relative '../model/nave'
 require_relative '../model/bomba'
 require_relative '../model/asteroide'
+require_relative '../model/estrella'
 require_relative '../model/choque'
 
 describe 'Misil' do
@@ -71,6 +72,21 @@ describe 'Misil' do
     misil_generador_de_choque.chocar(asteroide)
     expect(asteroide.vida).to eq vida_esperada_asteroide
     expect(asteroide.masa).to eq masa_esperada_asteroide
+    expect(misil_generador_de_choque.vida).to eq vida_esperada_misil
+    expect(misil_generador_de_choque.masa).to eq masa_esperada_misil
+  end
+
+  it 'si un misil choca una estrella ambos sufren efecto nulo' do
+    vida_esperada_misil = 100 
+    masa_esperada_misil = 400
+    vida_esperada_estrella = 100
+    masa_esperada_estrella = 700    
+    procesador_de_choque = Choque.new
+    estrella = Estrella.new(700, procesador_de_choque)
+    misil_generador_de_choque = Misil.new(400, procesador_de_choque)
+    misil_generador_de_choque.chocar(estrella)
+    expect(estrella.vida).to eq vida_esperada_estrella
+    expect(estrella.masa).to eq masa_esperada_estrella
     expect(misil_generador_de_choque.vida).to eq vida_esperada_misil
     expect(misil_generador_de_choque.masa).to eq masa_esperada_misil
   end
