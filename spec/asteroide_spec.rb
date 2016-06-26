@@ -77,10 +77,10 @@ describe 'Asteroide' do
     expect(asteroide_receptor_de_choque.masa).to eq masa_esperada_asteriode_receptor_de_choque
   end
 
-  it 'si un asteroide choca con una estrella ambos sufren efecto nulo' do
+  it 'si un asteroide choca con una estrella sufre efecto nulo, mientras que la estrella un efecto destructivo del 100 porciento' do
     vida_esperada_asteroide_generador_de_choque = 100 
     masa_esperada_asteriode_generador_de_choque = 550
-    vida_esperada_estrella = 100
+    vida_esperada_estrella = 0
     masa_esperada_estrella = 250    
     procesador_de_choque = Choque.new
     asteroide_generador_de_choque = Asteroide.new(550, procesador_de_choque)

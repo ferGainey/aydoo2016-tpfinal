@@ -58,10 +58,10 @@ describe 'Estrella' do
     expect(bomba.masa).to eq masa_esperada_bomba
   end
 
-  it 'si una estrella choca con un asteroide ambos sufren efecto nulo' do
+  it 'si una estrella choca con un asteroide sufre un efecto destructivo del 100 porciento, mientras que el asteroide sufre efecto nulo' do
     vida_esperada_asteroide = 100 
     masa_esperada_asteriode = 550
-    vida_esperada_estrella = 100
+    vida_esperada_estrella = 0
     masa_esperada_estrella = 250    
     procesador_de_choque = Choque.new
     asteroide = Asteroide.new(550, procesador_de_choque)
@@ -71,6 +71,21 @@ describe 'Estrella' do
     expect(asteroide.masa).to eq masa_esperada_asteriode
     expect(estrella_generadora_de_choque.vida).to eq vida_esperada_estrella
     expect(estrella_generadora_de_choque.masa).to eq masa_esperada_estrella
+  end
+
+  it 'si una estrella choca una estrella ambas sufren efecto destructivo del 100 porciento' do
+    vida_esperada_estrella_generadora_de_choque = 0
+    masa_esperada_estrella_generadora_de_choque = 270
+    vida_esperada_estrella_receptora_de_choque = 0
+    masa_esperada_estrella_receptora_de_choque = 780    
+    procesador_de_choque = Choque.new
+    estrella_receptora_de_choque = Estrella.new(780, procesador_de_choque)
+    estrella_generadora_de_choque = Estrella.new(270, procesador_de_choque)
+    estrella_generadora_de_choque.chocar(estrella_receptora_de_choque)
+    expect(estrella_receptora_de_choque.vida).to eq vida_esperada_estrella_receptora_de_choque
+    expect(estrella_receptora_de_choque.masa).to eq masa_esperada_estrella_receptora_de_choque
+    expect(estrella_generadora_de_choque.vida).to eq vida_esperada_estrella_generadora_de_choque
+    expect(estrella_generadora_de_choque.masa).to eq masa_esperada_estrella_generadora_de_choque
   end
 
 end
