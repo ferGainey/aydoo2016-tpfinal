@@ -27,11 +27,18 @@ describe 'Choque' do
     expect{procesador_de_choques.procesar_choque(objeto_generico, asteroide)}.to raise_exception(ObjetoGenericoException)
   end
 
-  it 'si el receptor generador de choque es generico, entonces lanza excepcion' do
+  it 'si el receptor de choque es generico, entonces lanza excepcion' do
     procesador_de_choques = Choque.new
     objeto_generico = ObjetoEspacial.new(200, procesador_de_choques)
     asteroide = Asteroide.new(400, procesador_de_choques)
     expect{procesador_de_choques.procesar_choque(asteroide, objeto_generico)}.to raise_exception(ObjetoGenericoException)
+  end
+
+  it 'si el receptor y generador de choque son genericos, entonces lanza excepcion' do
+    procesador_de_choques = Choque.new
+    objeto_generico_generador_de_choque = ObjetoEspacial.new(200, procesador_de_choques)
+    objeto_generico_receptor_de_choque = ObjetoEspacial.new(400, procesador_de_choques)
+    expect{procesador_de_choques.procesar_choque(objeto_generico_generador_de_choque, objeto_generico_receptor_de_choque)}.to raise_exception(ObjetoGenericoException)
   end
 
 end
