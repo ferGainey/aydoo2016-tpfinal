@@ -28,4 +28,19 @@ describe 'Estrella' do
     expect(estrella_generadora_de_choque.masa).to eq masa_esperada_estrella
   end
 
+  it 'si una estrella choca un misil ambos sufren efecto nulo' do
+    vida_esperada_misil = 100 
+    masa_esperada_misil = 400
+    vida_esperada_estrella = 100
+    masa_esperada_estrella = 700    
+    procesador_de_choque = Choque.new
+    estrella_generadora_de_choque = Estrella.new(700, procesador_de_choque)
+    misil = Misil.new(400, procesador_de_choque)
+    estrella_generadora_de_choque.chocar(misil)
+    expect(estrella_generadora_de_choque.vida).to eq vida_esperada_estrella
+    expect(estrella_generadora_de_choque.masa).to eq masa_esperada_estrella
+    expect(misil.vida).to eq vida_esperada_misil
+    expect(misil.masa).to eq masa_esperada_misil
+  end
+
 end
