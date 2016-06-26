@@ -1,5 +1,9 @@
 require 'rspec' 
 require_relative '../model/bomba'
+require_relative '../model/nave'
+require_relative '../model/misil'
+require_relative '../model/estrella'
+require_relative '../model/asteroide'
 require_relative '../model/choque'
 
 describe 'Bomba' do
@@ -41,6 +45,21 @@ describe 'Bomba' do
     expect(misil.masa).to eq masa_esperada_misil
     expect(bomba_generador_de_choque.vida).to eq vida_esperada_bomba
     expect(bomba_generador_de_choque.masa).to eq masa_esperada_bomba
+  end
+
+  it 'si una bomba choca una bomba ambas sufren un efecto destructivo de 100 unidades' do
+    vida_esperada_bomba_generadora_de_choque = 0 
+    masa_esperada_bomba_generadora_de_choque = 450
+    vida_esperada_bomba_receptora_de_choque = 0
+    masa_esperada_bomba_receptora_de_choque = 500    
+    procesador_de_choque = Choque.new
+    bomba_receptora_de_choque = Bomba.new(500, procesador_de_choque)
+    bomba_generadora_de_choque = Bomba.new(450, procesador_de_choque)
+    bomba_generadora_de_choque.chocar(bomba_receptora_de_choque)
+    expect(bomba_receptora_de_choque.vida).to eq vida_esperada_bomba_receptora_de_choque
+    expect(bomba_receptora_de_choque.masa).to eq masa_esperada_bomba_receptora_de_choque
+    expect(bomba_generadora_de_choque.vida).to eq vida_esperada_bomba_generadora_de_choque
+    expect(bomba_generadora_de_choque.masa).to eq masa_esperada_bomba_generadora_de_choque
   end
 
 end
