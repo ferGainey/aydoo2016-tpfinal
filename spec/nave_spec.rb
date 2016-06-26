@@ -1,5 +1,6 @@
 require 'rspec' 
 require_relative '../model/nave'
+require_relative '../model/misil'
 require_relative '../model/choque'
 
 describe 'Nave' do
@@ -40,6 +41,21 @@ describe 'Nave' do
     #un numero negativo pasaba a 0. Entonces aca va a pasar lo mismo
     expect(nave_generadora_de_choque.vida).to eq vida_esperada
     expect(nave_generadora_de_choque.masa).to eq masa_objeto_generador_de_choque_esperada
+  end
+
+  it 'si una Nave choca con un misil sufre un efecto destructivo de 80 unidades, y el misil 100' do
+    vida_esperada_nave = 20 
+    masa_esperada_nave = 400
+    vida_esperada_misil = 0
+    masa_esperada_misil = 900    
+    procesador_de_choque = Choque.new
+    nave_generadora_de_choque = Nave.new(400, procesador_de_choque)
+    misil = Misil.new(900, procesador_de_choque)
+    nave_generadora_de_choque.chocar(misil)
+    expect(nave_generadora_de_choque.vida).to eq vida_esperada_nave
+    expect(nave_generadora_de_choque.masa).to eq masa_esperada_nave
+    expect(misil.vida).to eq vida_esperada_misil
+    expect(misil.masa).to eq masa_esperada_misil
   end
 
 end
