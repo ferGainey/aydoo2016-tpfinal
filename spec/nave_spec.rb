@@ -1,6 +1,9 @@
 require 'rspec' 
 require_relative '../model/nave'
 require_relative '../model/misil'
+require_relative '../model/bomba'
+require_relative '../model/asteroide'
+require_relative '../model/estrella'
 require_relative '../model/choque'
 
 describe 'Nave' do
@@ -71,6 +74,21 @@ describe 'Nave' do
     expect(nave_generadora_de_choque.masa).to eq masa_esperada_nave
     expect(bomba.vida).to eq vida_esperada_bomba
     expect(bomba.masa).to eq masa_esperada_bomba
+  end
+
+  it 'si una Nave choca con un asteroide disminuye su masa un 50 porciento en relacion al asteroide, y el asteroide lo hace un 10 porciento en relacion a la nave' do
+    vida_esperada_nave = 100 
+    masa_esperada_nave = 200
+    vida_esperada_asteroide = 100
+    masa_esperada_asteroide = 820    
+    procesador_de_choque = Choque.new
+    nave_generadora_de_choque = Nave.new(600, procesador_de_choque)
+    asteroide = Asteroide.new(800, procesador_de_choque)
+    nave_generadora_de_choque.chocar(asteroide)
+    expect(nave_generadora_de_choque.vida).to eq vida_esperada_nave
+    expect(nave_generadora_de_choque.masa).to eq masa_esperada_nave
+    expect(asteroide.vida).to eq vida_esperada_asteroide
+    expect(asteroide.masa).to eq masa_esperada_asteroide
   end
 
 end
