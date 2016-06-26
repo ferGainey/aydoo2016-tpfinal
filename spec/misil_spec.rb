@@ -28,7 +28,7 @@ describe 'Misil' do
     expect(misil_generador_de_choque.masa).to eq masa_esperada_misil
   end
 
-    it 'si un Misil choca con otro Misil sufren un efecto destructivo de 100 unidades los dos misiles' do
+  it 'si un Misil choca con otro Misil sufren un efecto destructivo de 100 unidades los dos misiles' do
     vida_esperada = 0 
     masa_objeto_generador_de_choque_esperada = 400
     masa_objeto_receptor_de_choque_esperada = 900   
