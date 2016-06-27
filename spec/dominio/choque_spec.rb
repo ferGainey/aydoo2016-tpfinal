@@ -1,9 +1,10 @@
 require 'rspec' 
-require_relative '../model/choque'
-require_relative '../model/nave'
-require_relative '../model/asteroide'
-require_relative '../model/efecto_destructivo_por_unidad'
-require_relative '../model/objeto_generico_exception'
+require 'spec_helper'
+require_relative '../../model/dominio/choque'
+require_relative '../../model/dominio/nave'
+require_relative '../../model/dominio/asteroide'
+require_relative '../../model/efectos/efecto_destructivo_por_unidad'
+require_relative '../../model/excepciones/objeto_generico_exception'
 
 describe 'Choque' do
 

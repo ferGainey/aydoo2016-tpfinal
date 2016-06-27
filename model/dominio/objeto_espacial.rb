@@ -1,6 +1,6 @@
-require_relative '../model/vida_no_positiva_exception'
-require_relative '../model/masa_no_positiva_exception'
-require_relative '../model/objeto_muerto_exception'
+require_relative '../excepciones/vida_no_positiva_exception'
+require_relative '../excepciones/masa_no_positiva_exception'
+require_relative '../excepciones/objeto_muerto_exception'
 
 class ObjetoEspacial
 

@@ -1,9 +1,10 @@
 require 'rspec' 
-require_relative '../model/objeto_espacial'
-require_relative '../model/efecto_masa'
-require_relative '../model/efecto_destructivo_por_unidad'
-require_relative '../model/choque'
-require_relative '../model/objeto_muerto_exception'
+require 'spec_helper'
+require_relative '../../model/dominio/objeto_espacial'
+require_relative '../../model/efectos/efecto_masa'
+require_relative '../../model/efectos/efecto_destructivo_por_unidad'
+require_relative '../../model/dominio/choque'
+require_relative '../../model/excepciones/objeto_muerto_exception'
 
 describe 'ObjetoEspacial' do
 

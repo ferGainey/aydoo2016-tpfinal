@@ -1,7 +1,8 @@
 require 'rspec' 
-require_relative '../model/efecto_constructivo'
-require_relative '../model/objeto_espacial'
-require_relative '../model/choque'
+require 'spec_helper'
+require_relative '../../model/efectos/efecto_constructivo'
+require_relative '../../model/dominio/objeto_espacial'
+require_relative '../../model/dominio/choque'
 
 describe 'EfectoConstructivo' do
 
