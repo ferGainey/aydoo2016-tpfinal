@@ -25,4 +25,23 @@ describe 'IntegracionDeChoques' do
     expect(asteroide.masa).to eq masa_esperada_de_asteroide
   end
 
+  it 'debe efectuarse de manera correcta el choque entre una Estrella (vida=50, masa=10) y un Misil (vida=10, masa=30)' do  
+    procesador_de_choque = Choque.new
+    estrella = Estrella.new(procesador_de_choque)
+    misil = Misil.new(procesador_de_choque)
+    estrella.set_vida(50)
+    estrella.set_masa(10)
+    misil.set_vida(10)
+    misil.set_masa(30)
+    estrella.chocar(misil)
+    vida_esperada_de_estrella = 50
+    masa_esperada_de_estrella = 10
+    vida_esperada_de_misil = 10
+    masa_esperada_de_misil = 30
+    expect(estrella.vida).to eq vida_esperada_de_estrella
+    expect(estrella.masa).to eq masa_esperada_de_estrella
+    expect(misil.vida).to eq vida_esperada_de_misil
+    expect(misil.masa).to eq masa_esperada_de_misil
+  end
+
 end
