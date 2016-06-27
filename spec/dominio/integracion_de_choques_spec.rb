@@ -79,4 +79,22 @@ describe 'IntegracionDeChoques' do
     expect(asteroide.vida).to eq vida_esperada_de_asteroide
     expect(asteroide.masa).to eq masa_esperada_de_asteroide
   end
+
+  it 'debe efectuarse de manera correcta el choque de una Nave (vida=100, masa=100) con una Estrella (vida=50, masa=50)' do  
+    procesador_de_choque = Choque.new
+    nave = Nave.new(procesador_de_choque)
+    estrella = Estrella.new(procesador_de_choque)
+    estrella.set_vida(50)
+    estrella.set_masa(50)
+    nave.chocar(estrella)
+    vida_esperada_de_nave = 150
+    masa_esperada_de_nave = 100
+    vida_esperada_de_estrella = 0
+    masa_esperada_de_estrella = 50
+    expect(nave.vida).to eq vida_esperada_de_nave
+    expect(nave.masa).to eq masa_esperada_de_nave
+    expect(estrella.vida).to eq vida_esperada_de_estrella
+    expect(estrella.masa).to eq masa_esperada_de_estrella
+  end
+
 end
