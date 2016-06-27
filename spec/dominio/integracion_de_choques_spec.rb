@@ -63,4 +63,20 @@ describe 'IntegracionDeChoques' do
     expect(bomba_receptora_de_choque.masa).to eq masa_esperada_de_bomba_receptora_de_choque
   end
 
+  it 'debe efectuarse de manera correcta el choque de una Bomba (vida=200, masa=100) con un Asteriode (vida=30, masa=100)' do  
+    procesador_de_choque = Choque.new
+    bomba = Bomba.new(procesador_de_choque)
+    asteroide = Asteroide.new(procesador_de_choque)
+    bomba.set_vida(200)
+    asteroide.set_vida(30)
+    bomba.chocar(asteroide)
+    vida_esperada_de_bomba = 0
+    masa_esperada_de_bomba = 100
+    vida_esperada_de_asteroide = 30
+    masa_esperada_de_asteroide = 100
+    expect(bomba.vida).to eq vida_esperada_de_bomba
+    expect(bomba.masa).to eq masa_esperada_de_bomba
+    expect(asteroide.vida).to eq vida_esperada_de_asteroide
+    expect(asteroide.masa).to eq masa_esperada_de_asteroide
+  end
 end
