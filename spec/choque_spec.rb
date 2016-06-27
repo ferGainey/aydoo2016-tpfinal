@@ -9,8 +9,10 @@ describe 'Choque' do
 
   it 'se puede cambiar el efecto asignado para un choque' do  
     procesador_de_choques = Choque.new
-    nave = Nave.new(200, procesador_de_choques)
-    asteroide = Asteroide.new(400, procesador_de_choques)
+    nave = Nave.new(procesador_de_choques)
+    nave.set_masa(200)
+    asteroide = Asteroide.new(procesador_de_choques)
+    asteroide.set_masa(400)
     nuevo_efecto = EfectoDestructivoPorUnidad.new("100")
     procesador_de_choques.cambiar_efecto(nave, asteroide, nuevo_efecto)
     nave.chocar(asteroide)
@@ -22,22 +24,22 @@ describe 'Choque' do
   
   it 'si el objeto generador de choque es generico, entonces lanza excepcion' do
     procesador_de_choques = Choque.new
-    objeto_generico = ObjetoEspacial.new(200, procesador_de_choques)
-    asteroide = Asteroide.new(400, procesador_de_choques)
+    objeto_generico = ObjetoEspacial.new(procesador_de_choques)
+    asteroide = Asteroide.new(procesador_de_choques)
     expect{procesador_de_choques.procesar_choque(objeto_generico, asteroide)}.to raise_exception(ObjetoGenericoException)
   end
 
   it 'si el receptor de choque es generico, entonces lanza excepcion' do
     procesador_de_choques = Choque.new
-    objeto_generico = ObjetoEspacial.new(200, procesador_de_choques)
-    asteroide = Asteroide.new(400, procesador_de_choques)
+    objeto_generico = ObjetoEspacial.new(procesador_de_choques)
+    asteroide = Asteroide.new(procesador_de_choques)
     expect{procesador_de_choques.procesar_choque(asteroide, objeto_generico)}.to raise_exception(ObjetoGenericoException)
   end
 
   it 'si el receptor y generador de choque son genericos, entonces lanza excepcion' do
     procesador_de_choques = Choque.new
-    objeto_generico_generador_de_choque = ObjetoEspacial.new(200, procesador_de_choques)
-    objeto_generico_receptor_de_choque = ObjetoEspacial.new(400, procesador_de_choques)
+    objeto_generico_generador_de_choque = ObjetoEspacial.new(procesador_de_choques)
+    objeto_generico_receptor_de_choque = ObjetoEspacial.new(procesador_de_choques)
     expect{procesador_de_choques.procesar_choque(objeto_generico_generador_de_choque, objeto_generico_receptor_de_choque)}.to raise_exception(ObjetoGenericoException)
   end
 

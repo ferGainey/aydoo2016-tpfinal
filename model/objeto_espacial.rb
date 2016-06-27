@@ -7,15 +7,11 @@ class ObjetoEspacial
   attr_accessor :vida, :masa, :procesador_de_choque
   attr_reader :vivo
 
-  def initialize(masa_inicial, procesador_de_choque)
+  def initialize(procesador_de_choque)
     @vida = 100
-    if masa_inicial > 0
-      @masa = masa_inicial
-    else
-      raise MasaNoPositivaException.new("La masa inicial tiene que ser mayor a 0")
-    end
-      @procesador_de_choque = procesador_de_choque
-      @vivo = true
+    @masa = 100
+    @procesador_de_choque = procesador_de_choque
+    @vivo = true
   end
 
   def chocar(objeto_espacial)
@@ -37,6 +33,14 @@ class ObjetoEspacial
     else 
       raise VidaNoPositivaException.new("La vida inicial tiene que ser mayor a 0")
     end 
+  end
+
+  def set_masa(masa)
+    if masa > 0
+      @masa = masa
+    else
+      raise MasaNoPositivaException.new("La masa tiene que ser mayor a 0")
+    end
   end
 
   def verificar_estado

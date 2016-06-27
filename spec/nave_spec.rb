@@ -11,20 +11,20 @@ describe 'Nave' do
 
   it 'una Nave es un ObjetoEspacial, por lo que se crea con una cierta vida y masa' do  
     vida_esperada = 100
-    masa_esperada = 800
+    masa_esperada = 100
     procesador_de_choque = Choque.new
-    nave = Nave.new(masa_esperada, procesador_de_choque)
+    nave = Nave.new(procesador_de_choque)
     expect(nave.vida).to eq vida_esperada
     expect(nave.masa).to eq masa_esperada
   end
 
   it 'si una Nave choca con otra Nave sufre un efecto destructivo de 100 unidades las dos naves' do
     vida_esperada = 0 
-    masa_objeto_generador_de_choque_esperada = 400
-    masa_objeto_receptor_de_choque_esperada = 900   
+    masa_objeto_generador_de_choque_esperada = 100
+    masa_objeto_receptor_de_choque_esperada = 100   
     procesador_de_choque = Choque.new
-    nave_generadora_de_choque = Nave.new(400, procesador_de_choque)
-    nave_receptora_de_choque = Nave.new(900, procesador_de_choque)
+    nave_generadora_de_choque = Nave.new(procesador_de_choque)
+    nave_receptora_de_choque = Nave.new(procesador_de_choque)
     nave_generadora_de_choque.chocar(nave_receptora_de_choque)
     expect(nave_generadora_de_choque.vida).to eq vida_esperada
     expect(nave_generadora_de_choque.masa).to eq masa_objeto_generador_de_choque_esperada
@@ -34,12 +34,12 @@ describe 'Nave' do
 
   it 'si una Nave choca con un misil sufre un efecto destructivo de 80 unidades, y el misil 100' do
     vida_esperada_nave = 20 
-    masa_esperada_nave = 400
+    masa_esperada_nave = 100
     vida_esperada_misil = 0
-    masa_esperada_misil = 900    
+    masa_esperada_misil = 100    
     procesador_de_choque = Choque.new
-    nave_generadora_de_choque = Nave.new(400, procesador_de_choque)
-    misil = Misil.new(900, procesador_de_choque)
+    nave_generadora_de_choque = Nave.new(procesador_de_choque)
+    misil = Misil.new(procesador_de_choque)
     nave_generadora_de_choque.chocar(misil)
     expect(nave_generadora_de_choque.vida).to eq vida_esperada_nave
     expect(nave_generadora_de_choque.masa).to eq masa_esperada_nave
@@ -49,12 +49,12 @@ describe 'Nave' do
 
   it 'si una Nave choca con una bomba sufre un efecto destructivo de 50 unidades, y la bomba de 100' do
     vida_esperada_nave = 50 
-    masa_esperada_nave = 400
+    masa_esperada_nave = 100
     vida_esperada_bomba = 0
-    masa_esperada_bomba = 800    
+    masa_esperada_bomba = 100    
     procesador_de_choque = Choque.new
-    nave_generadora_de_choque = Nave.new(400, procesador_de_choque)
-    bomba = Bomba.new(800, procesador_de_choque)
+    nave_generadora_de_choque = Nave.new(procesador_de_choque)
+    bomba = Bomba.new(procesador_de_choque)
     nave_generadora_de_choque.chocar(bomba)
     expect(nave_generadora_de_choque.vida).to eq vida_esperada_nave
     expect(nave_generadora_de_choque.masa).to eq masa_esperada_nave
@@ -68,8 +68,10 @@ describe 'Nave' do
     vida_esperada_asteroide = 100
     masa_esperada_asteroide = 860    
     procesador_de_choque = Choque.new
-    nave_generadora_de_choque = Nave.new(600, procesador_de_choque)
-    asteroide = Asteroide.new(800, procesador_de_choque)
+    nave_generadora_de_choque = Nave.new(procesador_de_choque)
+    nave_generadora_de_choque.set_masa(600)
+    asteroide = Asteroide.new(procesador_de_choque)
+    asteroide.set_masa(800)
     nave_generadora_de_choque.chocar(asteroide)
     expect(nave_generadora_de_choque.vida).to eq vida_esperada_nave
     expect(nave_generadora_de_choque.masa).to eq masa_esperada_nave
@@ -79,12 +81,12 @@ describe 'Nave' do
 
   it 'si una Nave choca con una estrella aumenta su vida en una cantidad igual a la vida de la estrella, y la estrella sufre un danio destructivo del 100 porciento' do
     vida_esperada_nave = 200 
-    masa_esperada_nave = 400
+    masa_esperada_nave = 100
     vida_esperada_estrella = 0
-    masa_esperada_estrella = 800    
+    masa_esperada_estrella = 100    
     procesador_de_choque = Choque.new
-    nave_generadora_de_choque = Nave.new(400, procesador_de_choque)
-    estrella = Estrella.new(800, procesador_de_choque)
+    nave_generadora_de_choque = Nave.new(procesador_de_choque)
+    estrella = Estrella.new(procesador_de_choque)
     nave_generadora_de_choque.chocar(estrella)
     expect(nave_generadora_de_choque.vida).to eq vida_esperada_nave
     expect(nave_generadora_de_choque.masa).to eq masa_esperada_nave

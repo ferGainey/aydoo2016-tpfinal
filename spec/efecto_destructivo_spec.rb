@@ -10,8 +10,10 @@ describe 'EfectoDestructivo' do
     vida_esperada = 80    
     masa_esperada = 1000
     procesador_de_choque = Choque.new
-    objeto_espacial_generador_de_choque = ObjetoEspacial.new(masa_esperada, procesador_de_choque)
-    objeto_espacial_receptor_de_choque = ObjetoEspacial.new(masa_esperada, procesador_de_choque)
+    objeto_espacial_generador_de_choque = ObjetoEspacial.new(procesador_de_choque)
+    objeto_espacial_generador_de_choque.set_masa(masa_esperada)
+    objeto_espacial_receptor_de_choque = ObjetoEspacial.new(procesador_de_choque)
+    objeto_espacial_receptor_de_choque.set_masa(masa_esperada)
     efecto_destructivo = EfectoDestructivoPorUnidad.new("20")
     efecto_destructivo.aplicar_efecto(objeto_espacial_generador_de_choque, objeto_espacial_receptor_de_choque)
     expect(objeto_espacial_generador_de_choque.vida).to eq vida_esperada
@@ -30,8 +32,10 @@ describe 'EfectoDestructivo' do
     vida_esperada = 120    
     masa_esperada = 1000
     procesador_de_choque = Choque.new
-    objeto_espacial_generador_de_choque = ObjetoEspacial.new(masa_esperada, procesador_de_choque)
-    objeto_espacial_receptor_de_choque = ObjetoEspacial.new(masa_esperada, procesador_de_choque)
+    objeto_espacial_generador_de_choque = ObjetoEspacial.new(procesador_de_choque)
+    objeto_espacial_generador_de_choque.set_masa(masa_esperada)
+    objeto_espacial_receptor_de_choque = ObjetoEspacial.new(procesador_de_choque)
+    objeto_espacial_receptor_de_choque.set_masa(masa_esperada)
     objeto_espacial_generador_de_choque.set_vida(200)
     efecto_destructivo = EfectoDestructivoPorPorcentaje.new("40")
     efecto_destructivo.aplicar_efecto(objeto_espacial_generador_de_choque, objeto_espacial_receptor_de_choque)

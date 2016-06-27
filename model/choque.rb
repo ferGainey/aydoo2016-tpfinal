@@ -18,11 +18,11 @@ class Choque
   #la inicializacion tiene muchas lineas, pero no hay ninguna logica compleja dentro, solo se cargan los datos de los choques recibidos por defecto
   def initialize
     #cargo los objetos espaciales
-    nave = Nave.new(100,self)
-    misil = Misil.new(100, self)
-    bomba = Bomba.new(100, self)
-    asteroide = Asteroide.new(100, self)
-    estrella = Estrella.new(100, self)
+    nave = Nave.new(self)
+    misil = Misil.new(self)
+    bomba = Bomba.new(self)
+    asteroide = Asteroide.new(self)
+    estrella = Estrella.new(self)
     #armo el indice
     indice_actual = []
     #0=nave, 1=misil, 2=bomba, 3=asteroide, 4=estrella
