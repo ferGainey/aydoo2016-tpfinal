@@ -1,4 +1,6 @@
-class EfectoMasa
+require_relative '../efectos/efecto'
+
+class EfectoMasa < Efecto
 
 	#el porcentaje puede ser ingresado entre "" o sin ellos
 	#el simbolo % no es obligatorio, pero si se usa hay que ponerlo entre ""

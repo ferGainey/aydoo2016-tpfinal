@@ -1,6 +1,7 @@
 require_relative '../excepciones/destruccion_negativa_exception'
+require_relative '../efectos/efecto'
 
-class EfectoDestructivoPorUnidad
+class EfectoDestructivoPorUnidad < Efecto
 
   attr_reader :danio_a_provocar_en_unidades
 

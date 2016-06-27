@@ -1,7 +1,7 @@
-class EfectoNulo
+require_relative '../efectos/efecto'
 
-  def aplicar_efecto(objeto_espacial_generador_de_choque, objeto_espacial_receptor_de_choque)
+class EfectoNulo < Efecto
 
-  end
+  #esta clase existe para agregar claridad al codigo, ya que si bien no tiene comportamiento, esta representando una situacion del dominio
   
 end
