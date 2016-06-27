@@ -44,4 +44,23 @@ describe 'IntegracionDeChoques' do
     expect(misil.masa).to eq masa_esperada_de_misil
   end
 
+  it 'debe efectuarse de manera correcta el choque de una Bomba (vida=200, masa=90) con otra Bomba (vida=20, masa=45)' do  
+    procesador_de_choque = Choque.new
+    bomba_generadora_de_choque = Bomba.new(procesador_de_choque)
+    bomba_receptora_de_choque = Bomba.new(procesador_de_choque)
+    bomba_generadora_de_choque.set_vida(200)
+    bomba_generadora_de_choque.set_masa(90)
+    bomba_receptora_de_choque.set_vida(20)
+    bomba_receptora_de_choque.set_masa(45)
+    bomba_generadora_de_choque.chocar(bomba_receptora_de_choque)
+    vida_esperada_de_bomba_generadora_de_choque = 100
+    masa_esperada_de_bomba_generadora_de_choque = 90
+    vida_esperada_de_bomba_receptora_de_choque = 0
+    masa_esperada_de_bomba_receptora_de_choque = 45
+    expect(bomba_generadora_de_choque.vida).to eq vida_esperada_de_bomba_generadora_de_choque
+    expect(bomba_generadora_de_choque.masa).to eq masa_esperada_de_bomba_generadora_de_choque
+    expect(bomba_receptora_de_choque.vida).to eq vida_esperada_de_bomba_receptora_de_choque
+    expect(bomba_receptora_de_choque.masa).to eq masa_esperada_de_bomba_receptora_de_choque
+  end
+
 end
