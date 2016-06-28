@@ -88,7 +88,7 @@ class Choque
   end
 
   def cargo_los_efectos_a_la_fila_de_la_nave
-  	    #cargo los efectos de la fila de nave
+    #cargo los efectos de la fila de nave
     efecto_nave_nave = EfectoDestructivoPorUnidad.new("100")
     efecto_nave_misil = EfectoDestructivoPorUnidad.new("80")
     efecto_nave_bomba = EfectoDestructivoPorUnidad.new("50")

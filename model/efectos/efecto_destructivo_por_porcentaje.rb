@@ -9,11 +9,11 @@ class EfectoDestructivoPorPorcentaje < Efecto
   #se puede ingresar como un string o sin nada el danio_a_provocar
   def initialize(danio_a_provocar_en_porcentaje)
 	  danio_recibido = danio_a_provocar_en_porcentaje
-	  if danio_recibido.to_f > 0
-	    @danio_a_provocar_en_porcentaje = danio_a_provocar_en_porcentaje
-	  else
-	    raise DestruccionNegativaException.new("No se pueda aplicar un danio negativo")
-	  end
+    if danio_recibido.to_f > 0
+      @danio_a_provocar_en_porcentaje = danio_a_provocar_en_porcentaje
+    else
+      raise DestruccionNegativaException.new("No se pueda aplicar un danio negativo")
+    end
   end
   
   #el segundo argumento no es necesario, pero lo uso para no repetir codigo en la clase choque
