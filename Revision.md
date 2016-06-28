@@ -30,5 +30,46 @@ Respuesta: Rechazado, el tiene_vida? y tiene_masa? son métodos privados que per
 
 *Observación 5 (menor ya que es de desarrollo): utilizar el .rspec para poder visualizar por consola los test y agregar la medición de cobertura.
 
-Respuesta: Aceptado lo de la medición de cobertura, ya fue agregado.
+Respuesta: Aceptado, se agregó lo de la medición de cobertura.
+
+---
+
+Revisión 2: TP Final
+Con el repositorio en el estado del lunes 27 a las 24hs
+
+Revisor: Gonzalo Escobar
+
+Cantidad de Test:56
+
+Cobertura: 100%
+
+*Observación 1: En la clase choque no veo que se pueda agregar un elemento sin modificar código existente. Si bien la modificación es mínima porque solamente se agregan en la clase dos líneas de código choque, se podría garantizar completamente el principio Abierto-Cerrado agregando un método que permita agregar un elemento en runtime.
+
+Respuesta: Rechazado. Se puede agregar un método in ningún inconveniente para eso, pero no está puesto de momento, ya que para probarlo de manera completa debería existir un nuevo tipo de ObjetoEspacial. Igualmente para comprobar si se podía hacer hice la prueba, pero no la commitee, porque estaba introduciendo un nuevo tipo de ObjetoEspacial que no estaba en el dominio para probarlo. A continuación dejo copiado lo que hay que agregar al código para tener esa funcionalidad. No hay que modificar nada de código existente para esta nueva funcionalidad. Y como se puede ver, su complejidad es baja.
+
+-  comentario: si se agrega un nuevo objeto todas sus interacciones seran EfectoNulo por defecto, pero se pueden cambiar
+-  def agregar_un_nuevo_objeto_espacial(nuevo_objeto_espacial)
+-    @indice << nuevo_objeto_espacial
+-    agregar_efecto_nulo_a_la_columna_perteneciente_al_nuevo_objeto
+-    nueva_fila_perteneciente_al_nuevo_objeto = crear_una_fila_de_efecto_nulo
+-    @cuadro_de_choques << nueva_fila_perteneciente_al_nuevo_objeto
+-  end
+
+-  def agregar_efecto_nulo_a_la_columna_perteneciente_al_nuevo_objeto
+-    for num in 0...@cuadro_de_choques.size
+-      @cuadro_de_choques[num] << EfectoNulo.new
+-    end
+
+-  def crear_una_fila_de_efecto_nulo
+-    nueva_fila_perteneciente_al_nuevo_objeto = []
+-    for num in 0...@indice.size
+-      nueva_fila_perteneciente_al_nuevo_objeto << EfectoNulo.new
+-    end 
+-    return nueva_fila_perteneciente_al_nuevo_objeto 
+-  end
+
+Los gráficos están claros y completos.
+
+El patrón utilizado parece ser el apropiado para la resolución del problema.
+
 
