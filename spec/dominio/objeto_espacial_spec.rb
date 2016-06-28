@@ -127,4 +127,16 @@ describe 'ObjetoEspacial' do
     expect{objeto_espacial_generador_de_choque.chocar(objeto_espacial_receptor_de_choque)}.to raise_exception(ObjetoMuertoException)
   end
 
+  it 'si un objeto espacial muerto quiere chocar a otro objeto espacial muerto, no se va a hacer la interaccion, y se lanza una excepcion' do 
+    procesador_de_choque = Choque.new
+    objeto_espacial_generador_de_choque = ObjetoEspacial.new(procesador_de_choque)
+    objeto_espacial_receptor_de_choque = ObjetoEspacial.new(procesador_de_choque)
+    efecto_destructivo_por_unidad = EfectoDestructivoPorUnidad.new(1000)
+    efecto_destructivo_por_unidad.aplicar_efecto(objeto_espacial_receptor_de_choque, objeto_espacial_generador_de_choque)
+    efecto_destructivo_por_unidad.aplicar_efecto(objeto_espacial_generador_de_choque, objeto_espacial_receptor_de_choque)
+    objeto_espacial_generador_de_choque.verificar_estado
+    objeto_espacial_receptor_de_choque.verificar_estado
+    expect{objeto_espacial_generador_de_choque.chocar(objeto_espacial_receptor_de_choque)}.to raise_exception(ObjetoMuertoException)
+  end
+
 end
