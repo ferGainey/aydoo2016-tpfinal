@@ -1,5 +1,9 @@
 Este es el repositorio de Fernando Gainey para el trabajo práctico final de la materia AyDOO.
 
+Fernando Gainey
+Revisa a: Gabriel Palacios
+Revisado por: Gonzalo Escobar
+
 #TP FINAL
 
 
