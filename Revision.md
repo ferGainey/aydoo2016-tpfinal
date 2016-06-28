@@ -30,5 +30,5 @@ Respuesta: Rechazado, el tiene_vida? y tiene_masa? son métodos privados que per
 
 *Observación 5 (menor ya que es de desarrollo): utilizar el .rspec para poder visualizar por consola los test y agregar la medición de cobertura.
 
-
+Respuesta: Aceptado lo de la medición de cobertura, ya fue agregado.
 
