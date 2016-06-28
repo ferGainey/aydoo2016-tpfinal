@@ -91,7 +91,7 @@ describe 'ObjetoEspacial' do
     expect(objeto_espacial_generador_de_choque.vivo).to eq false
   end
 
-  it 'si un objeto espacial tiene masa igual a 0, su masa pasa a ser 0, y no esta vivo' do
+  it 'si un objeto espacial tiene masa igual a 0 no esta vivo' do
     vida_esperada = 100
     masa_objeto_generador_de_choque_esperada = 0  
     procesador_de_choque = Choque.new
@@ -106,7 +106,7 @@ describe 'ObjetoEspacial' do
     expect(objeto_espacial_generador_de_choque.vivo).to eq false
   end
 
-  it 'si un objeto espacial esta muerto, entonces no puede interactuar' do 
+  it 'si el objeto espacial que quiere chocar esta muerto, entonces no puede interactuar y lanza excepcion' do 
     procesador_de_choque = Choque.new
     objeto_espacial_generador_de_choque = ObjetoEspacial.new(procesador_de_choque)
     objeto_espacial_generador_de_choque.set_vida(30)
@@ -116,4 +116,15 @@ describe 'ObjetoEspacial' do
     objeto_espacial_generador_de_choque.verificar_estado
     expect{objeto_espacial_generador_de_choque.chocar(objeto_espacial_receptor_de_choque)}.to raise_exception(ObjetoMuertoException)
   end
+
+  it 'si un objeto espacial quiere chocar a un objeto muerto, no se va a hacer la interaccion, y se lanza una excepcion' do 
+    procesador_de_choque = Choque.new
+    objeto_espacial_generador_de_choque = ObjetoEspacial.new(procesador_de_choque)
+    objeto_espacial_receptor_de_choque = ObjetoEspacial.new(procesador_de_choque)
+    efecto_destructivo_por_unidad = EfectoDestructivoPorUnidad.new(1000)
+    efecto_destructivo_por_unidad.aplicar_efecto(objeto_espacial_receptor_de_choque, objeto_espacial_generador_de_choque)
+    objeto_espacial_receptor_de_choque.verificar_estado
+    expect{objeto_espacial_generador_de_choque.chocar(objeto_espacial_receptor_de_choque)}.to raise_exception(ObjetoMuertoException)
+  end
+
 end

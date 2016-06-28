@@ -15,7 +15,7 @@ class ObjetoEspacial
   end
 
   def chocar(objeto_espacial)
-    if self.vivo
+    if self.vivo && objeto_espacial.vivo
       objeto_receptor_de_choque = objeto_espacial.clone
       objeto_espacial.procesador_de_choque.procesar_choque(objeto_espacial, self)
       self.procesador_de_choque.procesar_choque(self, objeto_receptor_de_choque)
